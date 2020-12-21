@@ -12,12 +12,17 @@
 # Code author: [Alessio Russo - alessior@kth.se]
 # Last update: 6th October 2020, by alessior@kth.se
 #
+# Adapted by: [Simon Mello - smello@kth.se]
+#             [Luis Santos - lmpss@kth.se]
+
 
 # Load packages
+import time
 import numpy as np
 import gym
 import torch
 from tqdm import trange
+
 
 def running_average(x, N):
     ''' Function used to compute the running average
@@ -38,12 +43,12 @@ except:
     print('File neural-network-1.pth not found!')
     exit(-1)
 
-# Import and initialize Mountain Car Environment
+# Import and initialize Lunar Lander Environment
 env = gym.make('LunarLander-v2')
 env.reset()
 
 # Parameters
-N_EPISODES = 50            # Number of episodes to run for trainings
+N_EPISODES = 500            # Number of episodes to run for Q-network training
 CONFIDENCE_PASS = 50
 
 # Reward
@@ -59,6 +64,7 @@ for i in EPISODES:
     state = env.reset()
     total_episode_reward = 0.
     while not done:
+        #env.render()  # uncomment to render enviroment
         # Get next state and reward.  The done variable
         # will be True if you reached the goal position,
         # False otherwise
@@ -70,6 +76,7 @@ for i in EPISODES:
         total_episode_reward += reward
 
         # Update state for next iteration
+        #print(state)
         state = next_state
 
     # Append episode reward

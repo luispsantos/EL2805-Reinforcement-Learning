@@ -12,9 +12,13 @@
 # Code author: [Alessio Russo - alessior@kth.se]
 # Last update: 20th October 2020, by alessior@kth.se
 #
+# Adapted by: [Simon Mello - smello@kth.se]
+#             [Luis Santos - lmpss@kth.se]
+
 
 # Load packages
 import numpy as np
+
 
 class Agent(object):
     ''' Base agent class, used as a parent class
